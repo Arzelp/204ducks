@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+
+from __future__ import print_function
+import sys
+import os
+from math import factorial, pow, exp
+from time import time, sleep
+
+USAGE = """
+USAGE
+		./204ducks a
+DESCRIPTION
+		a constant
+"""
+
+def math_err(txt):
+	print("Error: " + txt, file=sys.stderr)
+	exit(84)
+
+def dicks(a):
+	pass
+
+def main():
+	args = sys.argv
+	if (len(args) != 2):
+		print(USAGE)
+		exit(84)
+	dicks(float(args[1]))
+	
+
+if (__name__ == '__main__'):
+	try:
+		main()
+	except:
+		exit(84)
+	exit(0)
