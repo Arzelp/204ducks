@@ -1,32 +1,85 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 
 from __future__ import print_function
 import sys
 import os
-from math import factorial, pow, exp
+from math import factorial, pow, exp, sqrt
 from time import time, sleep
 
 USAGE = """
-USAGE
-		./204ducks a
-DESCRIPTION
-		a constant
 """
 
 def math_err(txt):
 	print("Error: " + txt, file=sys.stderr)
 	exit(84)
 
-def dicks(a):
-	pass
+def help_me():
+	print("USAGE\n\t\t./204ducks a\n\nDESCRIPTION\n\t\ta\tconstant")
+	exit(0)
+
+def primitive(a, t):
+	return (-a * exp(-t) + (-(1 / 2) * (4 - 3 * a) * exp(-2 * t)) + (-(1 / 4) * (2 * a - 4) * exp(-4 * t)))
+
+def func(a, t):
+	return (a * exp(-t) + (4 - 3 * a) * exp(-2 * t) + (2 * a - 4) * exp(-4 * t))
+
+def calc_ontime(a, t):
+	i = 0
+	inter = 0.0001
+	res = 0
+	while (i < t):
+		res += inter * ((func(a, i) + func(a, (i + inter))) / 2)
+		i += inter
+	res *= 100
+	print("percentage of ducks back after %d minutes : %.1f%c" % (t, res, '%'))
+
+def calc_at(a, p):
+	t = 0
+	inter = 0.0001
+	res = 0
+	while (res < p):
+		res += 100 * inter * ((func(a, t) + func(a, (t + inter))) / 2)
+		t += inter
+	print("time after which %d%c of the ducks are back: %dm %.2ds" % (p, '%', t, round((t * 60) % 60, 0)))
+
+def calc_esp(a):
+	i = 0
+	inter = 0.01
+	res = 0
+	while (i < 300):
+		res += inter * (i + inter) * ((func(a, i) + func(a, (i + inter))) / 2)
+		i += inter
+	test = res
+	print("mean return time: %dm %.2ds" % (res, round((res * 60) % 60, 0)))
+	return (res)
+
+def calc_dev(a, esp):
+	i = 0
+	inter = 0.01
+	res = 0
+	while (i < 300):
+		res += inter * pow((i + (inter / 2) - esp), 2) * ((func(a, i) + func(a, (i + inter))) / 2)
+		i += inter
+	print("standard deviation: %.3f" % sqrt(res))
+
+def ducks(a):
+	esp = calc_esp(a)
+	calc_dev(a, esp)
+	calc_at(a, 50)
+	calc_at(a, 99)
+	calc_ontime(a, 1)
+	calc_ontime(a, 2)
+	exit(0)
 
 def main():
-	args = sys.argv
-	if (len(args) != 2):
-		print(USAGE)
-		exit(84)
-	dicks(float(args[1]))
-	
+    args = sys.argv
+    if (len(args) == 2):
+		if (args[1] == "-h"):
+			help_me()
+		else:
+			ducks(float(args[1]))
+    else:
+        math_err("Argument error")
 
 if (__name__ == '__main__'):
 	try:
