@@ -71,7 +71,6 @@ def ducks(a):
     calc_at(a, 99)
     calc_ontime(a, 1)
     calc_ontime(a, 2)
-    exit(0)
 
 def main():
     args = sys.argv
