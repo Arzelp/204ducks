@@ -24,9 +24,9 @@ def func(a, t):
     return (a * exp(-t) + (4 - 3 * a) * exp(-2 * t) + (2 * a - 4) * exp(-4 * t))
 
 def calc_ontime(a, t):
-    i = 0
+    i = 0.0
     inter = 0.0001
-    res = 0
+    res = 0.0
     while (i < t):
         res += inter * ((func(a, i) + func(a, (i + inter))) / 2)
         i += inter
@@ -37,18 +37,18 @@ def calc_ontime(a, t):
         print("percentage of ducks back after %d minutes: %.1f%%" % (t, res))
 
 def calc_at(a, p):
-    t = 0
+    t = 0.0
     inter = 0.0001
-    res = 0
+    res = 0.0
     while (res < p):
         res += 100 * inter * ((func(a, t) + func(a, (t + inter))) / 2)
         t += inter
     print("time after which %d%c of the ducks are back: %dm %.2ds" % (p, '%', t, round((t * 60) % 60, 0)))
 
 def calc_esp(a):
-    i = 0
+    i = 0.0
     inter = 0.01
-    res = 0
+    res = 0.0
     while (i < 700):
         res += inter * (i + inter) * ((func(a, i) + func(a, (i + inter))) / 2)
         i += inter
