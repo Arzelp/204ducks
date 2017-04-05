@@ -52,7 +52,6 @@ def calc_esp(a):
     while (i < 100):
         res += inter * (i + inter) * ((func(a, i) + func(a, (i + inter))) / 2)
         i += inter
-    res -= 0.01
     print("mean return time: %dm %.2ds" % (res, (res * 60) % 60))
     return (res)
 
