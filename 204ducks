@@ -25,9 +25,9 @@ def func(a, t):
 
 def calc_ontime(a, t):
     i = 0.0
-    inter = 0.0001
+    inter = 0.001
     res = 0.0
-    while (i < t):
+    while (i < t - inter):
         res += inter * ((func(a, i) + func(a, (i + inter))) / 2)
         i += inter
     res *= 100
@@ -52,7 +52,7 @@ def calc_esp(a):
     while (i < 100):
         res += inter * (i + inter) * ((func(a, i) + func(a, (i + inter))) / 2)
         i += inter
-    test = res
+    res -= 0.01
     print("mean return time: %dm %.2ds" % (res, (res * 60) % 60))
     return (res)
 
