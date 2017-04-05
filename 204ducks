@@ -49,7 +49,7 @@ def calc_esp(a):
     i = 0
     inter = 0.01
     res = 0
-    while (i < 300):
+    while (i < 700):
         res += inter * (i + inter) * ((func(a, i) + func(a, (i + inter))) / 2)
         i += inter
     test = res
@@ -60,7 +60,7 @@ def calc_dev(a, esp):
     i = 0
     inter = 0.01
     res = 0
-    while (i < 300):
+    while (i < 700):
         res += inter * pow((i + (inter / 2) - esp), 2) * ((func(a, i) + func(a, (i + inter))) / 2)
         i += inter
     print("standard deviation: %.3f" % sqrt(res))
