@@ -84,5 +84,8 @@ def main():
         math_err("Argument error")
 
 if (__name__ == '__main__'):
-    main()
+    try:
+        main()
+    except:
+        exit(84)
     exit(0)
