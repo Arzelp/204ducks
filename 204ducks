@@ -53,7 +53,7 @@ def calc_esp(a):
         res += inter * (i + inter) * ((func(a, i) + func(a, (i + inter))) / 2)
         i += inter
     test = res
-    print("mean return time: %dm %.2ds" % (res, round((res * 60) % 60, 0)))
+    print("mean return time: %dm %.2ds" % (res, (res * 60) % 60))
     return (res)
 
 def calc_dev(a, esp):
