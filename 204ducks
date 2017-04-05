@@ -31,7 +31,10 @@ def calc_ontime(a, t):
         res += inter * ((func(a, i) + func(a, (i + inter))) / 2)
         i += inter
     res *= 100
-    print("percentage of ducks back after %d minutes : %.1f%c" % (t, res, '%'))
+    if (t == 1):
+        print("percentage of ducks back after %d minute: %.1f%%" % (t, res))
+    else:
+        print("percentage of ducks back after %d minutes: %.1f%%" % (t, res))
 
 def calc_at(a, p):
     t = 0
